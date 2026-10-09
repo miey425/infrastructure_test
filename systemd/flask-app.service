@@ -1,0 +1,14 @@
+[Unit]
+Description=Homelab Flask Application
+After=network.target
+
+[Service]
+User=miyabi
+Group=miyabi
+WorkingDirectory=/home/miyabi/homelab/flask-app
+ExecStart=/home/miyabi/homelab/flask-app/.venv/bin/gunicorn --bind 127.0.0.1:5000 app:app
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
